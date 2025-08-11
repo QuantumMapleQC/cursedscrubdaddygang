@@ -1,73 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Archive</title>
-<style>
-  body {
-    background-color: #0e0e0e;
-    color: #ccc;
-    font-family: arial, sans-serif;
-    margin: 0;
-    padding: 10px;
-  }
-  a {
-    color: #81a2be;
-    text-decoration: underline;
-  }
-  a:visited {
-    color: #b294bb;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-  }
-  .grid img {
-    width: 100%;
-    height: auto;
-    background: #111;
-    border: 1px solid #222;
-  }
-  .nav {
-    margin-bottom: 15px;
-    font-size: 14px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>Image Archive</title>
+    <style>
+        body {
+            background-color: #1d1d1d;
+            color: #ccc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+        }
+        .gallery img {
+            max-width: 200px;
+            height: auto;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="gallery" id="gallery"></div>
 
-<div class="nav">
-  <a href="index.html">← Back to Home</a>
-</div>
+    <script>
+        // List of image filenames
+        const images = [
+            "image (10).jpeg","image (11).jpeg","image (12).jpeg","image (13).jpeg","image (14).jpeg",
+            "image (15).jpeg","image (16).jpeg","image (17).jpeg","image (19).jpeg","image (20).jpeg",
+            "image (21).jpeg","image (22).jpeg","image (23).jpeg","image (25).jpeg","image (26).jpeg",
+            "image (28).jpeg","image (29).jpeg","image (2).jpeg","image (30).jpeg","image (31).jpeg",
+            "image (32).jpeg","image (33).jpeg","image (34).jpeg","image (3).jpeg","image (4).jpeg",
+            "image (5).jpeg","image (6).jpeg","image (7).jpeg","image (8).jpeg","image (9).jpeg",
+            "image.jpeg","images (10).jpeg","images (11).jpeg","images (13).jpeg","images (14).jpeg",
+            "images (15).jpeg","images (16).jpeg","images (17).jpeg","images (18).jpeg","images (19).jpeg",
+            "images (1).jpeg","images (20).jpeg","images (21).jpeg","images (22).jpeg","images (23).jpeg",
+            "images (24).jpeg","images (25).jpeg","images (26).jpeg","images (27).jpeg","images (28).jpeg",
+            "images (29).jpeg","images (2).jpeg","images (30).jpeg","images (31).jpeg","images (32).jpeg",
+            "images (33).jpeg","images (34).jpeg","images (35).jpeg","images (36).jpeg","images (37).jpeg",
+            "images (38).jpeg","images (39).jpeg","images (3).jpeg","images (40).jpeg","images (41).jpeg",
+            "images (42).jpeg","images (43).jpeg","images (44).jpeg","images (45).jpeg","images (46).jpeg",
+            "images (47).jpeg","images (48).jpeg","images (49).jpeg","images (4).jpeg","images (50).jpeg",
+            "images (51).jpeg","images (52).jpeg","images (53).jpeg","images (54).jpeg","images (5).jpeg",
+            "images (6).jpeg","images (7).jpeg","images (9).jpeg","images.jpeg","images.png"
+        ];
 
-<div class="grid" id="gallery"></div>
-
-<script>
-  const images = [
-    "images/image (10).jpeg", "images/image (11).jpeg", "images/image (12).jpeg",
-    "images/image (13).jpeg", "images/image (14).jpeg", "images/image (15).jpeg",
-    "images/image (16).jpeg", "images/image (17).jpeg", "images/image (19).jpeg",
-    "images/image (20).jpeg", "images/image (21).jpeg", "images/image (22).jpeg",
-    "images/image (23).jpeg", "images/image (25).jpeg", "images/image (26).jpeg",
-    "images/image (28).jpeg", "images/image (29).jpeg", "images/image (2).jpeg"
-  ];
-
-  const gallery = document.getElementById("gallery");
-
-  images.forEach(imgPath => {
-    const link = document.createElement("a");
-    link.href = "view.html?img=" + encodeURIComponent(imgPath);
-
-    const img = document.createElement("img");
-    img.src = imgPath;
-    img.alt = imgPath.split("/").pop();
-
-    link.appendChild(img);
-    gallery.appendChild(link);
-  });
-</script>
-
-
+        const gallery = document.getElementById("gallery");
+        images.forEach(img => {
+            const link = document.createElement("a");
+            link.href = `view.html?img=${encodeURIComponent(img)}`;
+            const image = document.createElement("img");
+            image.src = `images/${img}`;
+            link.appendChild(image);
+            gallery.appendChild(link);
+        });
+    </script>
 </body>
 </html>
